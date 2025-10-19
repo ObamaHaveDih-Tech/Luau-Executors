@@ -1,0 +1,1038 @@
+-- CUSTOMIZATION: Change this to your desired GUI title
+local GUI_TITLE = "Fields UI"
+
+-- THEME SELECTION: Choose from "Serenity", "Ocean", "Blood Red", "Blue", "Forest"
+local THEME = "Ocean"
+
+-- Define Themes
+local themes = {
+    Serenity = {
+        mainBackground = Color3.fromRGB(255, 255, 255),
+        titleBar = Color3.fromRGB(240, 240, 240),
+        sidebar = Color3.fromRGB(230, 230, 230),
+        text = Color3.fromRGB(0, 0, 0),
+        button = Color3.fromRGB(200, 200, 200),
+        toggleOff = Color3.fromRGB(150, 150, 150),
+        toggleOn = Color3.fromRGB(0, 200, 0),
+        sliderTrack = Color3.fromRGB(200, 200, 200),
+        sliderFill = Color3.fromRGB(100, 100, 100),
+        sliderKnob = Color3.fromRGB(50, 50, 50),
+        tabButton = Color3.fromRGB(220, 220, 220),
+        tabButtonActive = Color3.fromRGB(200, 200, 200),
+        closeButton = Color3.fromRGB(255, 0, 0),
+        dropdownBackground = Color3.fromRGB(230, 230, 230),
+        dropdownOption = Color3.fromRGB(250, 250, 250),
+        dropdownHover = Color3.fromRGB(220, 220, 220),
+        multiSelectBackground = Color3.fromRGB(230, 230, 230),
+        multiSelectOption = Color3.fromRGB(250, 250, 250),
+        multiSelectHover = Color3.fromRGB(220, 220, 220),
+        multiSelectCheck = Color3.fromRGB(0, 200, 0),
+    },
+    Ocean = {
+        mainBackground = Color3.fromRGB(0, 128, 128),
+        titleBar = Color3.fromRGB(0, 100, 100),
+        sidebar = Color3.fromRGB(0, 110, 110),
+        text = Color3.fromRGB(255, 255, 255),
+        button = Color3.fromRGB(0, 150, 150),
+        toggleOff = Color3.fromRGB(100, 100, 100),
+        toggleOn = Color3.fromRGB(0, 200, 0),
+        sliderTrack = Color3.fromRGB(50, 50, 50),
+        sliderFill = Color3.fromRGB(0, 120, 255),
+        sliderKnob = Color3.fromRGB(200, 200, 200),
+        tabButton = Color3.fromRGB(0, 140, 140),
+        tabButtonActive = Color3.fromRGB(0, 160, 160),
+        closeButton = Color3.fromRGB(255, 0, 0),
+        dropdownBackground = Color3.fromRGB(0, 110, 110),
+        dropdownOption = Color3.fromRGB(0, 130, 130),
+        dropdownHover = Color3.fromRGB(0, 150, 150),
+        multiSelectBackground = Color3.fromRGB(0, 110, 110),
+        multiSelectOption = Color3.fromRGB(0, 130, 130),
+        multiSelectHover = Color3.fromRGB(0, 150, 150),
+        multiSelectCheck = Color3.fromRGB(0, 200, 0),
+    },
+    ["Blood Red"] = {
+        mainBackground = Color3.fromRGB(139, 0, 0),
+        titleBar = Color3.fromRGB(100, 0, 0),
+        sidebar = Color3.fromRGB(110, 0, 0),
+        text = Color3.fromRGB(255, 255, 255),
+        button = Color3.fromRGB(150, 0, 0),
+        toggleOff = Color3.fromRGB(100, 100, 100),
+        toggleOn = Color3.fromRGB(0, 200, 0),
+        sliderTrack = Color3.fromRGB(50, 50, 50),
+        sliderFill = Color3.fromRGB(200, 0, 0),
+        sliderKnob = Color3.fromRGB(200, 200, 200),
+        tabButton = Color3.fromRGB(120, 0, 0),
+        tabButtonActive = Color3.fromRGB(140, 0, 0),
+        closeButton = Color3.fromRGB(255, 0, 0),
+        dropdownBackground = Color3.fromRGB(110, 0, 0),
+        dropdownOption = Color3.fromRGB(130, 0, 0),
+        dropdownHover = Color3.fromRGB(150, 0, 0),
+        multiSelectBackground = Color3.fromRGB(110, 0, 0),
+        multiSelectOption = Color3.fromRGB(130, 0, 0),
+        multiSelectHover = Color3.fromRGB(150, 0, 0),
+        multiSelectCheck = Color3.fromRGB(0, 200, 0),
+    },
+    Blue = {
+        mainBackground = Color3.fromRGB(0, 0, 0),
+        titleBar = Color3.fromRGB(20, 20, 20),
+        sidebar = Color3.fromRGB(30, 30, 30),
+        text = Color3.fromRGB(255, 255, 255),
+        button = Color3.fromRGB(0, 120, 255),
+        toggleOff = Color3.fromRGB(100, 100, 100),
+        toggleOn = Color3.fromRGB(0, 200, 0),
+        sliderTrack = Color3.fromRGB(50, 50, 50),
+        sliderFill = Color3.fromRGB(0, 120, 255),
+        sliderKnob = Color3.fromRGB(200, 200, 200),
+        tabButton = Color3.fromRGB(50, 50, 50),
+        tabButtonActive = Color3.fromRGB(80, 80, 80),
+        closeButton = Color3.fromRGB(255, 0, 0),
+        dropdownBackground = Color3.fromRGB(40, 40, 40),
+        dropdownOption = Color3.fromRGB(60, 60, 60),
+        dropdownHover = Color3.fromRGB(80, 80, 80),
+        multiSelectBackground = Color3.fromRGB(40, 40, 40),
+        multiSelectOption = Color3.fromRGB(60, 60, 60),
+        multiSelectHover = Color3.fromRGB(80, 80, 80),
+        multiSelectCheck = Color3.fromRGB(0, 200, 0),
+    },
+    Forest = {
+        mainBackground = Color3.fromRGB(0, 100, 0),
+        titleBar = Color3.fromRGB(0, 80, 0),
+        sidebar = Color3.fromRGB(0, 90, 0),
+        text = Color3.fromRGB(255, 255, 255),
+        button = Color3.fromRGB(0, 150, 0),
+        toggleOff = Color3.fromRGB(100, 100, 100),
+        toggleOn = Color3.fromRGB(0, 200, 0),
+        sliderTrack = Color3.fromRGB(50, 50, 50),
+        sliderFill = Color3.fromRGB(0, 180, 0),
+        sliderKnob = Color3.fromRGB(200, 200, 200),
+        tabButton = Color3.fromRGB(0, 120, 0),
+        tabButtonActive = Color3.fromRGB(0, 140, 0),
+        closeButton = Color3.fromRGB(255, 0, 0),
+        dropdownBackground = Color3.fromRGB(0, 90, 0),
+        dropdownOption = Color3.fromRGB(0, 110, 0),
+        dropdownHover = Color3.fromRGB(0, 130, 0),
+        multiSelectBackground = Color3.fromRGB(0, 90, 0),
+        multiSelectOption = Color3.fromRGB(0, 110, 0),
+        multiSelectHover = Color3.fromRGB(0, 130, 0),
+        multiSelectCheck = Color3.fromRGB(0, 200, 0),
+    }
+}
+
+local selectedTheme = themes[THEME] or themes.Blue
+
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- Create ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "CustomGui"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = playerGui
+
+-- Create Modal Overlay for Confirmations
+local modalOverlay = Instance.new("Frame")
+modalOverlay.Name = "ModalOverlay"
+modalOverlay.Size = UDim2.new(1, 0, 1, 0)
+modalOverlay.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+modalOverlay.BackgroundTransparency = 0.5
+modalOverlay.Visible = false
+modalOverlay.ZIndex = 100
+modalOverlay.Parent = screenGui
+
+local popup = Instance.new("Frame")
+popup.Name = "Popup"
+popup.Size = UDim2.new(0, 300, 0, 150)
+popup.Position = UDim2.new(0.5, -150, 0.5, -75)
+popup.BackgroundColor3 = selectedTheme.mainBackground
+popup.BorderSizePixel = 0
+popup.Parent = modalOverlay
+
+local popupCorner = Instance.new("UICorner")
+popupCorner.CornerRadius = UDim.new(0, 10)
+popupCorner.Parent = popup
+
+local messageLabel = Instance.new("TextLabel")
+messageLabel.Name = "Message"
+messageLabel.Size = UDim2.new(1, -20, 1, -60)
+messageLabel.Position = UDim2.new(0, 10, 0, 10)
+messageLabel.BackgroundTransparency = 1
+messageLabel.TextColor3 = selectedTheme.text
+messageLabel.TextSize = 16
+messageLabel.Font = Enum.Font.FredokaOne
+messageLabel.TextWrapped = true
+messageLabel.Text = ""
+messageLabel.Parent = popup
+
+local yesButton = Instance.new("TextButton")
+yesButton.Name = "Yes"
+yesButton.Size = UDim2.new(0, 100, 0, 40)
+yesButton.Position = UDim2.new(0, 40, 1, -50)
+yesButton.BackgroundColor3 = selectedTheme.button
+yesButton.TextColor3 = selectedTheme.text
+yesButton.TextSize = 14
+yesButton.Font = Enum.Font.FredokaOne
+yesButton.Text = "Yes"
+yesButton.Parent = popup
+
+local yesCorner = Instance.new("UICorner")
+yesCorner.CornerRadius = UDim.new(0, 5)
+yesCorner.Parent = yesButton
+
+local noButton = Instance.new("TextButton")
+noButton.Name = "No"
+noButton.Size = UDim2.new(0, 100, 0, 40)
+noButton.Position = UDim2.new(1, -140, 1, -50)
+noButton.BackgroundColor3 = selectedTheme.button
+noButton.TextColor3 = selectedTheme.text
+noButton.TextSize = 14
+noButton.Font = Enum.Font.FredokaOne
+noButton.Text = "No"
+noButton.Parent = popup
+
+local noCorner = Instance.new("UICorner")
+noCorner.CornerRadius = UDim.new(0, 5)
+noCorner.Parent = noButton
+
+local onConfirm = nil
+
+yesButton.MouseButton1Click:Connect(function()
+    if onConfirm then
+        onConfirm()
+    end
+    modalOverlay.Visible = false
+end)
+
+noButton.MouseButton1Click:Connect(function()
+    modalOverlay.Visible = false
+end)
+
+local function showConfirm(message, callback)
+    messageLabel.Text = message
+    onConfirm = callback
+    modalOverlay.Visible = true
+end
+
+-- Create Main Frame
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "MainFrame"
+mainFrame.Size = UDim2.new(0, 500, 0, 500)
+mainFrame.Position = UDim2.new(0.5, -200, 0.5, -200)
+mainFrame.BackgroundColor3 = selectedTheme.mainBackground
+mainFrame.BorderSizePixel = 0
+mainFrame.ClipsDescendants = false
+mainFrame.Parent = screenGui
+
+local mainCorner = Instance.new("UICorner")
+mainCorner.CornerRadius = UDim.new(0, 10)
+mainCorner.Parent = mainFrame
+
+-- Create Sidebar
+local sidebar = Instance.new("Frame")
+sidebar.Name = "Sidebar"
+sidebar.Size = UDim2.new(0, 120, 1, -40)
+sidebar.Position = UDim2.new(0, 0, 0, 40)
+sidebar.BackgroundColor3 = selectedTheme.sidebar
+sidebar.BorderSizePixel = 0
+sidebar.Parent = mainFrame
+
+local sidebarCorner = Instance.new("UICorner")
+sidebarCorner.CornerRadius = UDim.new(0, 5)
+sidebarCorner.Parent = sidebar
+
+local sidebarListLayout = Instance.new("UIListLayout")
+sidebarListLayout.Parent = sidebar
+sidebarListLayout.FillDirection = Enum.FillDirection.Vertical
+sidebarListLayout.Padding = UDim.new(0, 5)
+sidebarListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+sidebarListLayout.VerticalAlignment = Enum.VerticalAlignment.Top
+
+local sidebarPadding = Instance.new("UIPadding")
+sidebarPadding.PaddingTop = UDim.new(0, 5)
+sidebarPadding.PaddingBottom = UDim.new(0, 5)
+sidebarPadding.PaddingLeft = UDim.new(0, 5)
+sidebarPadding.PaddingRight = UDim.new(0, 5)
+sidebarPadding.Parent = sidebar
+
+-- Title Bar
+local titleBar = Instance.new("Frame")
+titleBar.Name = "TitleBar"
+titleBar.Size = UDim2.new(1, 0, 0, 40)
+titleBar.BackgroundColor3 = selectedTheme.titleBar
+titleBar.BorderSizePixel = 0
+titleBar.Parent = mainFrame
+
+local titleCorner = Instance.new("UICorner")
+titleCorner.CornerRadius = UDim.new(0, 5)
+titleCorner.Parent = titleBar
+
+local titleText = Instance.new("TextLabel")
+titleText.Name = "TitleText"
+titleText.Size = UDim2.new(1, -80, 1, 0)
+titleText.BackgroundTransparency = 1
+titleText.TextColor3 = selectedTheme.text
+titleText.TextSize = 18
+titleText.Font = Enum.Font.FredokaOne
+titleText.Text = GUI_TITLE
+titleText.TextXAlignment = Enum.TextXAlignment.Left
+titleText.Parent = titleBar
+
+local titlePadding = Instance.new("UIPadding")
+titlePadding.PaddingLeft = UDim.new(0, 10)
+titlePadding.Parent = titleText
+
+local minimizeButton = Instance.new("TextButton")
+minimizeButton.Name = "MinimizeButton"
+minimizeButton.Size = UDim2.new(0, 40, 1, 0)
+minimizeButton.Position = UDim2.new(1, -80, 0, 0)
+minimizeButton.BackgroundColor3 = selectedTheme.closeButton
+minimizeButton.TextColor3 = selectedTheme.text
+minimizeButton.TextSize = 16
+minimizeButton.Font = Enum.Font.FredokaOne
+minimizeButton.Text = "-"
+minimizeButton.BorderSizePixel = 0
+minimizeButton.Parent = titleBar
+
+local minCorner = Instance.new("UICorner")
+minCorner.CornerRadius = UDim.new(0, 5)
+minCorner.Parent = minimizeButton
+
+local closeButton = Instance.new("TextButton")
+closeButton.Name = "CloseButton"
+closeButton.Size = UDim2.new(0, 40, 1, 0)
+closeButton.Position = UDim2.new(1, -40, 0, 0)
+closeButton.BackgroundColor3 = selectedTheme.closeButton
+closeButton.TextColor3 = selectedTheme.text
+closeButton.TextSize = 16
+closeButton.Font = Enum.Font.FredokaOne
+closeButton.Text = "X"
+closeButton.BorderSizePixel = 0
+closeButton.Parent = titleBar
+
+local closeCorner = Instance.new("UICorner")
+closeCorner.CornerRadius = UDim.new(0, 5)
+closeCorner.Parent = closeButton
+
+local isMinimized = false
+local originalSize = nil
+
+minimizeButton.MouseButton1Click:Connect(function()
+    isMinimized = not isMinimized
+    if isMinimized then
+        originalSize = mainFrame.Size
+        mainFrame.Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 40)
+        sidebar.Visible = false
+        contentFrame.Visible = false
+        minimizeButton.Text = "+"
+    else
+        mainFrame.Size = originalSize
+        sidebar.Visible = true
+        contentFrame.Visible = true
+        minimizeButton.Text = "-"
+    end
+end)
+
+closeButton.MouseButton1Click:Connect(function()
+    mainFrame.Visible = false
+end)
+
+-- Content Area
+local contentFrame = Instance.new("Frame")
+contentFrame.Name = "ContentFrame"
+contentFrame.Size = UDim2.new(1, -120, 1, -40)
+contentFrame.Position = UDim2.new(0, 120, 0, 40)
+contentFrame.BackgroundTransparency = 1
+contentFrame.ClipsDescendants = false
+contentFrame.Parent = mainFrame
+
+local contentCorner = Instance.new("UICorner")
+contentCorner.CornerRadius = UDim.new(0, 5)
+contentCorner.Parent = contentFrame
+
+local listLayout = Instance.new("UIListLayout")
+listLayout.Parent = contentFrame
+listLayout.Padding = UDim.new(0, 10)
+listLayout.FillDirection = Enum.FillDirection.Vertical
+listLayout.SortOrder = Enum.SortOrder.LayoutOrder
+listLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+
+local contentPadding = Instance.new("UIPadding")
+contentPadding.PaddingTop = UDim.new(0, 10)
+contentPadding.PaddingBottom = UDim.new(0, 10)
+contentPadding.PaddingLeft = UDim.new(0, 10)
+contentPadding.PaddingRight = UDim.new(0, 10)
+contentPadding.Parent = contentFrame
+
+-- Tab Management
+local tabs = {}
+local currentTab = nil
+
+local function CreateTab(config)
+    local tabName = config.Name or "Tab" .. tostring(#tabs + 1)
+    local tabContent = Instance.new("Frame")
+    tabContent.Name = tabName .. "Content"
+    tabContent.Size = UDim2.new(1, 0, 1, 0)
+    tabContent.BackgroundTransparency = 1
+    tabContent.Visible = false
+    tabContent.ClipsDescendants = false
+    tabContent.Parent = contentFrame
+
+    local tabListLayout = Instance.new("UIListLayout")
+    tabListLayout.Parent = tabContent
+    tabListLayout.Padding = UDim.new(0, 10)
+    tabListLayout.FillDirection = Enum.FillDirection.Vertical
+    tabListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    tabListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+
+    local tabButton = Instance.new("TextButton")
+    tabButton.Name = tabName .. "Button"
+    tabButton.Size = UDim2.new(1, -10, 0, 30)
+    tabButton.BackgroundColor3 = selectedTheme.tabButton
+    tabButton.TextColor3 = selectedTheme.text
+    tabButton.TextSize = 14
+    tabButton.Font = Enum.Font.FredokaOne
+    tabButton.Text = config.Text or tabName
+    tabButton.TextWrapped = true
+    tabButton.BorderSizePixel = 0
+    tabButton.LayoutOrder = #tabs + 1
+    tabButton.Parent = sidebar
+
+    local tabCorner = Instance.new("UICorner")
+    tabCorner.CornerRadius = UDim.new(0, 5)
+    tabCorner.Parent = tabButton
+
+    tabButton.MouseButton1Click:Connect(function()
+        if currentTab then
+            currentTab.Content.Visible = false
+            currentTab.Button.BackgroundColor3 = selectedTheme.tabButton
+        end
+        
+        tabContent.Visible = true
+        tabButton.BackgroundColor3 = selectedTheme.tabButtonActive
+        currentTab = {Button = tabButton, Content = tabContent}
+    end)
+
+    table.insert(tabs, {Button = tabButton, Content = tabContent})
+    
+    if #tabs > 10 then
+        local extraHeight = (#tabs - 10) * 20
+        mainFrame.Size = UDim2.new(0, mainFrame.Size.X.Offset, 0, math.min(600, 400 + extraHeight))
+        sidebar.Size = UDim2.new(0, 120, 1, -40)
+        contentFrame.Size = UDim2.new(1, -120, 1, -40)
+    end
+    
+    return tabContent
+end
+
+-- BUTTON CREATION
+local function CreateButton(config)
+    local button = Instance.new("TextButton")
+    button.Name = config.Name or "Button"
+    button.Size = UDim2.new(1, 0, 0, 40)
+    button.BackgroundColor3 = config.Color or selectedTheme.button
+    button.TextColor3 = selectedTheme.text
+    button.TextSize = 14
+    button.Font = Enum.Font.FredokaOne
+    button.Text = config.Text or "Button"
+    button.BorderSizePixel = 0
+    button.Parent = config.Parent or contentFrame
+
+    local buttonCorner = Instance.new("UICorner")
+    buttonCorner.CornerRadius = UDim.new(0, 5)
+    buttonCorner.Parent = button
+
+    button.MouseButton1Click:Connect(function()
+        -- Press animation
+        local press = TweenService:Create(button, TweenInfo.new(0.1, Enum.EasingStyle.Quad), {
+            Size = UDim2.new(1, -5, 0, 38)
+        })
+        press:Play()
+        press.Completed:Wait()
+        
+        local release = TweenService:Create(button, TweenInfo.new(0.1, Enum.EasingStyle.Quad), {
+            Size = UDim2.new(1, 0, 0, 40)
+        })
+        release:Play()
+        
+        local function executeCallback()
+            if config.Callback then
+                config.Callback()
+            end
+        end
+        
+        if config.Confirm then
+            showConfirm(config.Confirm, executeCallback)
+        else
+            executeCallback()
+        end
+    end)
+    
+    return button
+end
+
+-- TOGGLE CREATION
+local function CreateToggle(config)
+    local toggleState = false
+
+    local toggleContainer = Instance.new("Frame")
+    toggleContainer.Name = (config.Name or "Toggle") .. "Container"
+    toggleContainer.Size = UDim2.new(1, 0, 0, 35)
+    toggleContainer.BackgroundTransparency = 1
+    toggleContainer.Parent = config.Parent or contentFrame
+
+    local toggleLabel = Instance.new("TextLabel")
+    toggleLabel.Name = config.Name or "ToggleLabel"
+    toggleLabel.Size = UDim2.new(1, -70, 1, 0)
+    toggleLabel.Position = UDim2.new(0, 0, 0, 0)
+    toggleLabel.BackgroundTransparency = 1
+    toggleLabel.TextColor3 = selectedTheme.text
+    toggleLabel.TextSize = 14
+    toggleLabel.Font = Enum.Font.FredokaOne
+    toggleLabel.Text = config.Text or "Toggle:"
+    toggleLabel.TextXAlignment = Enum.TextXAlignment.Left
+    toggleLabel.Parent = toggleContainer
+
+    local toggleButton = Instance.new("TextButton")
+    toggleButton.Name = (config.Name or "Toggle") .. "Button"
+    toggleButton.Size = UDim2.new(0, 60, 1, 0)
+    toggleButton.Position = UDim2.new(1, -60, 0, 0)
+    toggleButton.BackgroundColor3 = selectedTheme.toggleOff
+    toggleButton.TextColor3 = selectedTheme.text
+    toggleButton.TextSize = 12
+    toggleButton.Font = Enum.Font.FredokaOne
+    toggleButton.Text = "OFF"
+    toggleButton.BorderSizePixel = 0
+    toggleButton.Parent = toggleContainer
+
+    local toggleCorner = Instance.new("UICorner")
+    toggleCorner.CornerRadius = UDim.new(0, 5)
+    toggleCorner.Parent = toggleButton
+
+    toggleButton.MouseButton1Click:Connect(function()
+        toggleState = not toggleState
+        
+        -- Animate toggle
+        local targetColor = toggleState and selectedTheme.toggleOn or selectedTheme.toggleOff
+        local tween = TweenService:Create(toggleButton, TweenInfo.new(0.3, Enum.EasingStyle.Quad), {
+            BackgroundColor3 = targetColor
+        })
+        tween:Play()
+        
+        toggleButton.Text = toggleState and "ON" or "OFF"
+        
+        if config.Callback then
+            config.Callback(toggleState)
+        end
+    end)
+    
+    return toggleButton
+end
+
+-- SLIDER CREATION
+local function CreateSlider(config)
+    local sliderValue = config.Default or 0
+    local minValue = config.Min or 0
+    local maxValue = config.Max or 100
+    local sliderContainer = Instance.new("Frame")
+    sliderContainer.Name = (config.Name or "Slider") .. "Container"
+    sliderContainer.Size = UDim2.new(1, 0, 0, 50)
+    sliderContainer.BackgroundTransparency = 1
+    sliderContainer.Parent = config.Parent or contentFrame
+
+    local sliderLabel = Instance.new("TextLabel")
+    sliderLabel.Name = config.Name or "SliderLabel"
+    sliderLabel.Size = UDim2.new(1, -70, 0, 20)
+    sliderLabel.Position = UDim2.new(0, 0, 0, 0)
+    sliderLabel.BackgroundTransparency = 1
+    sliderLabel.TextColor3 = selectedTheme.text
+    sliderLabel.TextSize = 14
+    sliderLabel.Font = Enum.Font.FredokaOne
+    sliderLabel.Text = (config.Text or "Slider:") .. " " .. tostring(sliderValue)
+    sliderLabel.TextXAlignment = Enum.TextXAlignment.Left
+    sliderLabel.Parent = sliderContainer
+
+    local sliderTrack = Instance.new("Frame")
+    sliderTrack.Name = "SliderTrack"
+    sliderTrack.Size = UDim2.new(1, 0, 0, 10)
+    sliderTrack.Position = UDim2.new(0, 0, 0, 30)
+    sliderTrack.BackgroundColor3 = selectedTheme.sliderTrack
+    sliderTrack.BorderSizePixel = 0
+    sliderTrack.Parent = sliderContainer
+
+    local sliderFill = Instance.new("Frame")
+    sliderFill.Name = "SliderFill"
+    sliderFill.Size = UDim2.new((sliderValue - minValue) / (maxValue - minValue), 0, 1, 0)
+    sliderFill.BackgroundColor3 = selectedTheme.sliderFill
+    sliderFill.BorderSizePixel = 0
+    sliderFill.Parent = sliderTrack
+
+    local sliderKnob = Instance.new("TextButton")
+    sliderKnob.Name = "SliderKnob"
+    sliderKnob.Size = UDim2.new(0, 20, 0, 20)
+    sliderKnob.Position = UDim2.new((sliderValue - minValue) / (maxValue - minValue), -10, 0, -5)
+    sliderKnob.BackgroundColor3 = selectedTheme.sliderKnob
+    sliderKnob.BorderSizePixel = 0
+    sliderKnob.Text = ""
+    sliderKnob.Parent = sliderTrack
+
+    local sliderCorner = Instance.new("UICorner")
+    sliderCorner.CornerRadius = UDim.new(0, 5)
+    sliderCorner.Parent = sliderKnob
+
+    local function updateSlider(input)
+        local trackSize = sliderTrack.AbsoluteSize.X
+        local knobPos = math.clamp(input.Position.X - sliderTrack.AbsolutePosition.X, 0, trackSize)
+        local newValue = minValue + (knobPos / trackSize) * (maxValue - minValue)
+        newValue = math.floor(newValue + 0.5)
+        sliderValue = newValue
+        sliderFill.Size = UDim2.new(knobPos / trackSize, 0, 1, 0)
+        sliderKnob.Position = UDim2.new(knobPos / trackSize, -10, 0, -5)
+        sliderLabel.Text = (config.Text or "Slider:") .. " " .. tostring(sliderValue)
+        if config.Callback then
+            config.Callback(sliderValue)
+        end
+    end
+
+    local draggingSlider = false
+    sliderKnob.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or 
+           input.UserInputType == Enum.UserInputType.Touch then
+            draggingSlider = true
+            mainFrame.Active = false
+            updateSlider(input)
+        end
+    end)
+
+    sliderKnob.InputChanged:Connect(function(input)
+        if draggingSlider and (input.UserInputType == Enum.UserInputType.MouseMovement or 
+            input.UserInputType == Enum.UserInputType.Touch) then
+            updateSlider(input)
+        end
+    end)
+
+    sliderKnob.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or 
+           input.UserInputType == Enum.UserInputType.Touch then
+            draggingSlider = false
+            mainFrame.Active = true
+        end
+    end)
+
+    return sliderContainer
+end
+
+-- Helper function to get table keys
+local function keys(t)
+    local keyset = {}
+    for k in pairs(t) do
+        table.insert(keyset, k)
+    end
+    return keyset
+end
+
+-- MULTI-SELECT DROPDOWN (ALL DROPDOWNS ARE NOW MULTI-SELECT)
+local function CreateDropdown(config)
+    local dropdownContainer = Instance.new("Frame")
+    dropdownContainer.Name = (config.Name or "Dropdown") .. "Container"
+    dropdownContainer.Size = UDim2.new(1, 0, 0, 40)
+    dropdownContainer.BackgroundTransparency = 1
+    dropdownContainer.ClipsDescendants = false
+    dropdownContainer.Parent = config.Parent or contentFrame
+
+    local dropdownButton = Instance.new("TextButton")
+    dropdownButton.Name = (config.Name or "Dropdown") .. "Button"
+    dropdownButton.Size = UDim2.new(1, 0, 0, 40)
+    dropdownButton.BackgroundColor3 = selectedTheme.multiSelectBackground
+    dropdownButton.TextColor3 = selectedTheme.text
+    dropdownButton.TextSize = 14
+    dropdownButton.Font = Enum.Font.FredokaOne
+    dropdownButton.Text = config.Text or "Select Options"
+    dropdownButton.BorderSizePixel = 0
+    dropdownButton.Parent = dropdownContainer
+
+    local dropdownCorner = Instance.new("UICorner")
+    dropdownCorner.CornerRadius = UDim.new(0, 5)
+    dropdownCorner.Parent = dropdownButton
+
+    local dropdownList = Instance.new("Frame")
+    dropdownList.Name = "DropdownList"
+    dropdownList.Size = UDim2.new(1, 0, 0, 0)
+    dropdownList.Position = UDim2.new(0, 0, 1, 5)
+    dropdownList.BackgroundColor3 = selectedTheme.multiSelectBackground
+    dropdownList.BorderSizePixel = 0
+    dropdownList.Visible = false
+    dropdownList.ZIndex = 50
+    dropdownList.ClipsDescendants = false
+    dropdownList.Parent = dropdownContainer
+
+    local listLayout = Instance.new("UIListLayout")
+    listLayout.Parent = dropdownList
+    listLayout.FillDirection = Enum.FillDirection.Vertical
+    listLayout.Padding = UDim.new(0, 2)
+    listLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    listLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
+
+    local listPadding = Instance.new("UIPadding")
+    listPadding.PaddingLeft = UDim.new(0, 5)
+    listPadding.PaddingRight = UDim.new(0, 5)
+    listPadding.Parent = dropdownList
+
+    local listCorner = Instance.new("UICorner")
+    listCorner.CornerRadius = UDim.new(0, 5)
+    listCorner.Parent = dropdownList
+
+    local options = config.Options or {}
+    local selectedOptions = {}
+    local isOpen = false
+
+    for i, option in ipairs(options) do
+        local optionFrame = Instance.new("Frame")
+        optionFrame.Name = "OptionFrame" .. i
+        optionFrame.Size = UDim2.new(1, 0, 0, 30)
+        optionFrame.BackgroundTransparency = 1
+        optionFrame.ZIndex = 50
+        optionFrame.Parent = dropdownList
+
+        local optionButton = Instance.new("TextButton")
+        optionButton.Name = "Option" .. i
+        optionButton.Size = UDim2.new(1, -25, 1, 0)
+        optionButton.BackgroundColor3 = selectedTheme.multiSelectOption
+        optionButton.TextColor3 = selectedTheme.text
+        optionButton.TextSize = 12
+        optionButton.Font = Enum.Font.FredokaOne
+        optionButton.Text = tostring(option)
+        optionButton.BorderSizePixel = 0
+        optionButton.ZIndex = 50
+        optionButton.Parent = optionFrame
+
+        local optionCorner = Instance.new("UICorner")
+        optionCorner.CornerRadius = UDim.new(0, 5)
+        optionCorner.Parent = optionButton
+
+        local checkLabel = Instance.new("TextLabel")
+        checkLabel.Name = "CheckLabel" .. i
+        checkLabel.Size = UDim2.new(0, 20, 1, 0)
+        checkLabel.Position = UDim2.new(1, -20, 0, 0)
+        checkLabel.BackgroundTransparency = 1
+        checkLabel.TextColor3 = selectedTheme.multiSelectCheck
+        checkLabel.TextSize = 14
+        checkLabel.Font = Enum.Font.FredokaOne
+        checkLabel.Text = ""
+        checkLabel.ZIndex = 50
+        checkLabel.Parent = optionFrame
+
+        optionButton.MouseButton1Click:Connect(function()
+            if selectedOptions[option] then
+                selectedOptions[option] = nil
+                checkLabel.Text = ""
+                -- Fade out check animation
+                TweenService:Create(checkLabel, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {
+                    TextTransparency = 1
+                }):Play()
+            else
+                selectedOptions[option] = true
+                checkLabel.TextTransparency = 1
+                checkLabel.Text = "✔"
+                -- Fade in check animation
+                TweenService:Create(checkLabel, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {
+                    TextTransparency = 0
+                }):Play()
+            end
+            
+            local selectedText = table.concat(keys(selectedOptions), ", ")
+            dropdownButton.Text = (config.Text or "Select Options") .. (selectedText ~= "" and ": " .. selectedText or "")
+            
+            if config.Callback then
+                config.Callback(keys(selectedOptions))
+            end
+        end)
+
+        optionButton.MouseEnter:Connect(function()
+            TweenService:Create(optionButton, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {
+                BackgroundColor3 = selectedTheme.multiSelectHover
+            }):Play()
+        end)
+
+        optionButton.MouseLeave:Connect(function()
+            TweenService:Create(optionButton, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {
+                BackgroundColor3 = selectedTheme.multiSelectOption
+            }):Play()
+        end)
+    end
+
+    dropdownButton.MouseButton1Click:Connect(function()
+        isOpen = not isOpen
+        
+        if isOpen then
+            local totalHeight = #options * 32
+            local targetHeight = math.min(totalHeight, 150)
+            dropdownList.Size = UDim2.new(1, 0, 0, targetHeight)
+            dropdownList.Visible = true
+        else
+            dropdownList.Size = UDim2.new(1, 0, 0, 0)
+            dropdownList.Visible = false
+        end
+    end)
+
+    return dropdownContainer
+end
+
+-- MULTI-SELECT DROPDOWN (explicit naming for clarity)
+local function CreateMultiSelectDropdown(config)
+    return CreateDropdown(config)
+end
+
+-- DRAGGING FUNCTIONALITY
+local dragStart = nil
+local startPos = nil
+local dragging = false
+
+titleBar.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or 
+       input.UserInputType == Enum.UserInputType.Touch then
+        dragStart = input.Position
+        startPos = mainFrame.Position
+        dragging = true
+    end
+end)
+
+titleBar.InputChanged:Connect(function(input)
+    if dragging and input.UserInputType == Enum.UserInputType.MouseMovement or
+       (dragging and input.UserInputType == Enum.UserInputType.Touch) then
+        if dragStart then
+            local delta = input.Position - dragStart
+            mainFrame.Position = UDim2.new(
+                startPos.X.Scale,
+                startPos.X.Offset + delta.X,
+                startPos.Y.Scale,
+                startPos.Y.Offset + delta.Y
+            )
+        end
+    end
+end)
+
+titleBar.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or 
+       input.UserInputType == Enum.UserInputType.Touch then
+        dragging = false
+        dragStart = nil
+        startPos = nil
+    end
+end)
+
+-- KEYBOARD SHORTCUTS
+local function switchTab(index)
+    if index > 0 and index <= #tabs then
+        if currentTab then
+            currentTab.Content.Visible = false
+            currentTab.Button.BackgroundColor3 = selectedTheme.tabButton
+        end
+        tabs[index].Content.Visible = true
+        tabs[index].Button.BackgroundColor3 = selectedTheme.tabButtonActive
+        currentTab = tabs[index]
+    end
+end
+
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if gameProcessed then return end
+    if input.UserInputType == Enum.UserInputType.Keyboard then
+        local keyCode = input.KeyCode
+        if keyCode == Enum.KeyCode.RightAlt then
+            mainFrame.Visible = not mainFrame.Visible
+        elseif mainFrame.Visible then
+            if keyCode == Enum.KeyCode.One then
+                switchTab(1)
+            elseif keyCode == Enum.KeyCode.Two then
+                switchTab(2)
+            elseif keyCode == Enum.KeyCode.Three then
+                switchTab(3)
+            elseif keyCode == Enum.KeyCode.Four then
+                switchTab(4)
+            elseif keyCode == Enum.KeyCode.Five then
+                switchTab(5)
+            elseif keyCode == Enum.KeyCode.Six then
+                switchTab(6)
+            elseif keyCode == Enum.KeyCode.Seven then
+                switchTab(7)
+            elseif keyCode == Enum.KeyCode.Eight then
+                switchTab(8)
+            elseif keyCode == Enum.KeyCode.Nine then
+                switchTab(9)
+            end
+        end
+    end
+end)
+
+-- ========== EXAMPLE USAGE ==========
+
+-- Create tabs
+local tab1 = CreateTab({Name = "Tab1", Text = "Tab 1"})
+
+-- Make first tab active by default
+if tabs[1] then
+    tabs[1].Content.Visible = true
+    tabs[1].Button.BackgroundColor3 = selectedTheme.tabButtonActive
+    currentTab = tabs[1]
+end
+
+-- Tab 1 Content (all dropdowns are now multi-select)
+CreateButton({
+    Name = "Nameless Admin",
+    Text = "Nameless Admin",
+    Parent = tab1,
+    Callback = function()
+        -- https://scriptblox.com/script/Universal-Script-Nameless-Admin-35212
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua"))();
+    end
+})
+
+
+
+CreateButton({
+    Name = "Angel.lol",
+    Text = "Angel.lol",
+    Parent = tab1,
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/angel1LOL/angel.LOL4/refs/heads/main/Angel.LOL"))()
+    end
+})
+
+
+
+CreateButton({
+    Name = "Walkspeed & Jumppower",
+    Text = "Reset Settings",
+    Parent = tab1,
+    Callback = function()
+        -- https://scriptblox.com/script/Universal-Script-mobile-macro-walkspeed-and-jumppower-46729
+
+loadstring(game:HttpGet('https://raw.githubusercontent.com/19mdSkibidi/19sMooze-Mobile-Rework/refs/heads/main/Mooze%20Mob'))()
+    end
+})
+
+
+
+
+CreateButton({
+    Name = "Angel.lol (Unmoveable)",
+    Text = "Reset Settings",
+    Parent = tab1,
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/angel1LOL/ANGEL.LOL2/refs/heads/main/ANGEL.LOL"))()
+    end
+})
+
+
+
+CreateToggle({
+    Name = "xray",
+    Text = "xray",
+    Parent = tab1,
+    Callback = function(state)
+        -- Simple X-Ray/ESP Script for Roblox (Client-Side Exploit)
+-- Note: This requires an exploit executor like Synapse or Krnl to run.
+-- Use at your own risk; this can get your account banned.
+-- This script highlights players through walls by drawing boxes around them.
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local RunService = game:GetService("RunService")
+
+-- Function to create a BillboardGui for ESP
+local function createESP(player)
+    if player == LocalPlayer then return end -- Don't ESP yourself
+    local character = player.Character
+    if not character then return end
+    
+    local billboard = Instance.new("BillboardGui")
+    billboard.Name = "ESP"
+    billboard.Adornee = character:FindFirstChild("HumanoidRootPart") or character.PrimaryPart
+    billboard.Size = UDim2.new(0, 100, 0, 100)
+    billboard.StudsOffset = Vector3.new(0, 3, 0)
+    billboard.AlwaysOnTop = true
+    billboard.Parent = game.CoreGui -- Put in CoreGui to show through walls
+    
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2.new(1, 0, 1, 0)
+    frame.BackgroundTransparency = 1
+    frame.Parent = billboard
+    
+    -- Corners for box
+    local function createCorner(name, pos)
+        local corner = Instance.new("Frame")
+        corner.Name = name
+        corner.Size = UDim2.new(0, 2, 0, 2)
+        corner.Position = pos
+        corner.BackgroundColor3 = Color3.new(1, 0, 0) -- Red color
+        corner.Parent = frame
+        return corner
+    end
+    
+    -- Create box lines (simplified box ESP)
+    local topLeft = createCorner("TopLeft", UDim2.new(0, 0, 0, 0))
+    local topRight = createCorner("TopRight", UDim2.new(1, -2, 0, 0))
+    local bottomLeft = createCorner("BottomLeft", UDim2.new(0, 0, 1, -2))
+    local bottomRight = createCorner("BottomRight", UDim2.new(1, -2, 1, -2))
+    
+    -- Lines
+    local function createLine(name, pos, size)
+        local line = Instance.new("Frame")
+        line.Name = name
+        line.Position = pos
+        line.Size = size
+        line.BackgroundColor3 = Color3.new(1, 0, 0)
+        line.Parent = frame
+        return line
+    end
+    
+    createLine("Top", UDim2.new(0, 0, 0, 0), UDim2.new(1, 0, 0, 2))
+    createLine("Bottom", UDim2.new(0, 0, 1, -2), UDim2.new(1, 0, 0, 2))
+    createLine("Left", UDim2.new(0, 0, 0, 0), UDim2.new(0, 2, 1, 0))
+    createLine("Right", UDim2.new(1, -2, 0, 0), UDim2.new(0, 2, 1, 0))
+    
+    -- Name label
+    local nameLabel = Instance.new("TextLabel")
+    nameLabel.Text = player.Name
+    nameLabel.Size = UDim2.new(1, 0, 0, 20)
+    nameLabel.Position = UDim2.new(0, 0, -0.2, 0)
+    nameLabel.BackgroundTransparency = 1
+    nameLabel.TextColor3 = Color3.new(1, 1, 1)
+    nameLabel.Parent = billboard
+    
+    -- Update on character change
+    player.CharacterAdded:Connect(function(newChar)
+        billboard.Adornee = newChar:WaitForChild("HumanoidRootPart")
+    end)
+end
+
+-- Add ESP to existing players
+for _, player in ipairs(Players:GetPlayers()) do
+    createESP(player)
+end
+
+-- Add ESP to new players
+Players.PlayerAdded:Connect(createESP)
+
+-- Clean up on player removal
+Players.PlayerRemoving:Connect(function(player)
+    local esp = game.CoreGui:FindFirstChild("ESP", true)
+    if esp then esp:Destroy() end
+end)
+
+-- To make it true X-Ray, you can add wall transparency toggle, but that's game-specific.
+-- For example, to make walls transparent:
+-- local function toggleXRay(on)
+--     for _, part in ipairs(workspace:GetDescendants()) do
+--         if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" and not part.Parent:FindFirstChild("Humanoid") then
+--             part.Transparency = on and 0.7 or 0
+--         end
+--     end
+-- end
+-- toggleXRay(true) -- Uncomment to enable, but this might not work in all games due to filtering.
+
+print("X-Ray/ESP Script Loaded!")
+   end
+})
